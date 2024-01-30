@@ -4,8 +4,11 @@ Component: ARM Compiler 5.06 update 6 (build 750) Tool: armlink [4d35ed]
 
 Section Cross References
 
+    myblinky.o(i.TurnLEDOnAndOff) refers to myblinky.o(i.delay) for delay
+    myblinky.o(i.controlLed) refers to myblinky.o(i.TurnLEDOnAndOff) for TurnLEDOnAndOff
     myblinky.o(i.main) refers to system_mkl25z4.o(i.SystemCoreClockUpdate) for SystemCoreClockUpdate
     myblinky.o(i.main) refers to myblinky.o(i.InitGPIO) for InitGPIO
+    myblinky.o(i.main) refers to myblinky.o(i.controlLed) for controlLed
     myblinky.o(i.main) refers to myblinky.o(.data) for counter
     startup_mkl25z4.o(RESET) refers to startup_mkl25z4.o(STACK) for __initial_sp
     startup_mkl25z4.o(RESET) refers to startup_mkl25z4.o(.text) for Reset_Handler
@@ -53,19 +56,19 @@ Image Symbol Table
 
     RESET                                    0x00000000   Section      192  startup_mkl25z4.o(RESET)
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     RTE\Device\MKL25Z128xxx4\startup_MKL25Z4.s 0x00000000   Number         0  startup_mkl25z4.o ABSOLUTE
     RTE\Device\MKL25Z128xxx4\system_MKL25Z4.c 0x00000000   Number         0  system_mkl25z4.o ABSOLUTE
     RTE\\Device\\MKL25Z128xxx4\\system_MKL25Z4.c 0x00000000   Number         0  system_mkl25z4.o ABSOLUTE
@@ -90,12 +93,16 @@ Image Symbol Table
     i.InitGPIO                               0x0000014c   Section        0  myblinky.o(i.InitGPIO)
     i.SystemCoreClockUpdate                  0x000001d8   Section        0  system_mkl25z4.o(i.SystemCoreClockUpdate)
     i.SystemInit                             0x00000368   Section        0  system_mkl25z4.o(i.SystemInit)
-    i.__ARM_common_switch8                   0x00000374   Section        0  system_mkl25z4.o(i.__ARM_common_switch8)
-    i.__scatterload_copy                     0x00000390   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x0000039e   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x000003a0   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.main                                   0x000003b0   Section        0  myblinky.o(i.main)
+    i.TurnLEDOnAndOff                        0x00000374   Section        0  myblinky.o(i.TurnLEDOnAndOff)
+    i.__ARM_common_switch8                   0x000003dc   Section        0  system_mkl25z4.o(i.__ARM_common_switch8)
+    i.__scatterload_null                     0x000003f8   Section        2  handlers.o(i.__scatterload_null)
     .ARM.__at_0x400                          0x00000400   Section       16  startup_mkl25z4.o(.ARM.__at_0x400)
+    i.__scatterload_copy                     0x00000410   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_zeroinit                 0x0000041e   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.controlLed                             0x0000042c   Section        0  myblinky.o(i.controlLed)
+    i.delay                                  0x00000460   Section        0  myblinky.o(i.delay)
+    delay                                    0x00000461   Thumb Code    20  myblinky.o(i.delay)
+    i.main                                   0x00000474   Section        0  myblinky.o(i.main)
     .data                                    0x1ffff000   Section        4  myblinky.o(.data)
     .data                                    0x1ffff004   Section        4  system_mkl25z4.o(.data)
     STACK                                    0x1ffff008   Section      256  startup_mkl25z4.o(STACK)
@@ -169,13 +176,15 @@ Image Symbol Table
     InitGPIO                                 0x0000014d   Thumb Code   124  myblinky.o(i.InitGPIO)
     SystemCoreClockUpdate                    0x000001d9   Thumb Code   372  system_mkl25z4.o(i.SystemCoreClockUpdate)
     SystemInit                               0x00000369   Thumb Code     8  system_mkl25z4.o(i.SystemInit)
-    __ARM_common_switch8                     0x00000375   Thumb Code    28  system_mkl25z4.o(i.__ARM_common_switch8)
-    __scatterload_copy                       0x00000391   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x0000039f   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x000003a1   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    main                                     0x000003b1   Thumb Code    34  myblinky.o(i.main)
-    Region$$Table$$Base                      0x000003d8   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000003f8   Number         0  anon$$obj.o(Region$$Table)
+    TurnLEDOnAndOff                          0x00000375   Thumb Code    98  myblinky.o(i.TurnLEDOnAndOff)
+    __ARM_common_switch8                     0x000003dd   Thumb Code    28  system_mkl25z4.o(i.__ARM_common_switch8)
+    __scatterload_null                       0x000003f9   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_copy                       0x00000411   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_zeroinit                   0x0000041f   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    controlLed                               0x0000042d   Thumb Code    52  myblinky.o(i.controlLed)
+    main                                     0x00000475   Thumb Code    38  myblinky.o(i.main)
+    Region$$Table$$Base                      0x000004a0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000004c0   Number         0  anon$$obj.o(Region$$Table)
     counter                                  0x1ffff000   Data           4  myblinky.o(.data)
     SystemCoreClock                          0x1ffff004   Data           4  system_mkl25z4.o(.data)
     __initial_sp                             0x1ffff108   Data           0  startup_mkl25z4.o(STACK)
@@ -188,52 +197,54 @@ Memory Map of the image
 
   Image Entry point : 0x000000d5
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00000418, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x000004c8, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000410, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000004c0, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000000   0x000000c0   Data   RO           57    RESET               startup_mkl25z4.o
-    0x000000c0   0x000000c0   0x00000000   Code   RO           99  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
-    0x000000c0   0x000000c0   0x00000004   Code   RO          104    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
-    0x000000c4   0x000000c4   0x00000004   Code   RO          107    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
-    0x000000c8   0x000000c8   0x00000000   Code   RO          109    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
-    0x000000c8   0x000000c8   0x00000000   Code   RO          111    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
-    0x000000c8   0x000000c8   0x00000008   Code   RO          112    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
-    0x000000d0   0x000000d0   0x00000000   Code   RO          114    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
-    0x000000d0   0x000000d0   0x00000000   Code   RO          116    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
-    0x000000d0   0x000000d0   0x00000004   Code   RO          105    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
-    0x000000d4   0x000000d4   0x00000028   Code   RO           59  * .text               startup_mkl25z4.o
-    0x000000fc   0x000000fc   0x0000002c   Code   RO          102    .text               mc_p.l(uidiv.o)
-    0x00000128   0x00000128   0x00000024   Code   RO          118    .text               mc_p.l(init.o)
+    0x00000000   0x00000000   0x000000c0   Data   RO           74    RESET               startup_mkl25z4.o
+    0x000000c0   0x000000c0   0x00000000   Code   RO          116  * .ARM.Collect$$$$00000000  mc_p.l(entry.o)
+    0x000000c0   0x000000c0   0x00000004   Code   RO          121    .ARM.Collect$$$$00000001  mc_p.l(entry2.o)
+    0x000000c4   0x000000c4   0x00000004   Code   RO          124    .ARM.Collect$$$$00000004  mc_p.l(entry5.o)
+    0x000000c8   0x000000c8   0x00000000   Code   RO          126    .ARM.Collect$$$$00000008  mc_p.l(entry7b.o)
+    0x000000c8   0x000000c8   0x00000000   Code   RO          128    .ARM.Collect$$$$0000000A  mc_p.l(entry8b.o)
+    0x000000c8   0x000000c8   0x00000008   Code   RO          129    .ARM.Collect$$$$0000000B  mc_p.l(entry9a.o)
+    0x000000d0   0x000000d0   0x00000000   Code   RO          131    .ARM.Collect$$$$0000000D  mc_p.l(entry10a.o)
+    0x000000d0   0x000000d0   0x00000000   Code   RO          133    .ARM.Collect$$$$0000000F  mc_p.l(entry11a.o)
+    0x000000d0   0x000000d0   0x00000004   Code   RO          122    .ARM.Collect$$$$00002712  mc_p.l(entry2.o)
+    0x000000d4   0x000000d4   0x00000028   Code   RO           76  * .text               startup_mkl25z4.o
+    0x000000fc   0x000000fc   0x0000002c   Code   RO          119    .text               mc_p.l(uidiv.o)
+    0x00000128   0x00000128   0x00000024   Code   RO          135    .text               mc_p.l(init.o)
     0x0000014c   0x0000014c   0x0000008c   Code   RO            3    i.InitGPIO          myblinky.o
-    0x000001d8   0x000001d8   0x00000190   Code   RO           67    i.SystemCoreClockUpdate  system_mkl25z4.o
-    0x00000368   0x00000368   0x0000000c   Code   RO           68    i.SystemInit        system_mkl25z4.o
-    0x00000374   0x00000374   0x0000001c   Code   RO           91    i.__ARM_common_switch8  system_mkl25z4.o
-    0x00000390   0x00000390   0x0000000e   Code   RO          122    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x0000039e   0x0000039e   0x00000002   Code   RO          123    i.__scatterload_null  mc_p.l(handlers.o)
-    0x000003a0   0x000003a0   0x0000000e   Code   RO          124    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x000003ae   0x000003ae   0x00000002   PAD
-    0x000003b0   0x000003b0   0x00000028   Code   RO            4    i.main              myblinky.o
-    0x000003d8   0x000003d8   0x00000020   Data   RO          120    Region$$Table       anon$$obj.o
-    0x000003f8   0x000003f8   0x00000008   PAD
-    0x00000400   0x00000400   0x00000010   Code   RO           58    .ARM.__at_0x400     startup_mkl25z4.o
+    0x000001d8   0x000001d8   0x00000190   Code   RO           84    i.SystemCoreClockUpdate  system_mkl25z4.o
+    0x00000368   0x00000368   0x0000000c   Code   RO           85    i.SystemInit        system_mkl25z4.o
+    0x00000374   0x00000374   0x00000068   Code   RO            4    i.TurnLEDOnAndOff   myblinky.o
+    0x000003dc   0x000003dc   0x0000001c   Code   RO          108    i.__ARM_common_switch8  system_mkl25z4.o
+    0x000003f8   0x000003f8   0x00000002   Code   RO          140    i.__scatterload_null  mc_p.l(handlers.o)
+    0x000003fa   0x000003fa   0x00000006   PAD
+    0x00000400   0x00000400   0x00000010   Code   RO           75    .ARM.__at_0x400     startup_mkl25z4.o
+    0x00000410   0x00000410   0x0000000e   Code   RO          139    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x0000041e   0x0000041e   0x0000000e   Code   RO          141    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x0000042c   0x0000042c   0x00000034   Code   RO            5    i.controlLed        myblinky.o
+    0x00000460   0x00000460   0x00000014   Code   RO            6    i.delay             myblinky.o
+    0x00000474   0x00000474   0x0000002c   Code   RO            7    i.main              myblinky.o
+    0x000004a0   0x000004a0   0x00000020   Data   RO          137    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x00000410, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x1ffff000   0x00000410   0x00000004   Data   RW            5    .data               myblinky.o
-    0x1ffff004   0x00000414   0x00000004   Data   RW           69    .data               system_mkl25z4.o
-
-
-    Execution Region ER_ZI (Exec base: 0x1ffff008, Load base: 0x00000418, Size: 0x00000100, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x1ffff000, Load base: 0x000004c0, Size: 0x00000008, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1ffff008        -       0x00000100   Zero   RW           55    STACK               startup_mkl25z4.o
+    0x1ffff000   0x000004c0   0x00000004   Data   RW            8    .data               myblinky.o
+    0x1ffff004   0x000004c4   0x00000004   Data   RW           86    .data               system_mkl25z4.o
+
+
+    Execution Region ER_ZI (Exec base: 0x1ffff008, Load base: 0x000004c8, Size: 0x00000100, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x1ffff008        -       0x00000100   Zero   RW           72    STACK               startup_mkl25z4.o
 
 
 ==============================================================================
@@ -243,14 +254,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       180         22          0          4          0       5512   myblinky.o
+       360         28          0          4          0       7299   myblinky.o
         56         30        192          0        256        788   startup_mkl25z4.o
        440         42          0          4          0       1475   system_mkl25z4.o
 
     ----------------------------------------------------------------------
-       676         94        232          8        256       7775   Object Totals
+       856        100        224          8        256       9562   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         0          0          8          0          0          0   (incl. Padding)
+         0          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -269,8 +280,8 @@ Image component sizes
         44          0          0          0          0         72   uidiv.o
 
     ----------------------------------------------------------------------
-       132         16          0          0          0        140   Library Totals
-         2          0          0          0          0          0   (incl. Padding)
+       136         16          0          0          0        140   Library Totals
+         6          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -279,7 +290,7 @@ Image component sizes
        130         16          0          0          0        140   mc_p.l
 
     ----------------------------------------------------------------------
-       132         16          0          0          0        140   Library Totals
+       136         16          0          0          0        140   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -288,15 +299,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-       808        110        232          8        256       7935   Grand Totals
-       808        110        232          8        256       7935   ELF Image Totals
-       808        110        232          8          0          0   ROM Totals
+       992        116        224          8        256       9590   Grand Totals
+       992        116        224          8        256       9590   ELF Image Totals
+       992        116        224          8          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 1040 (   1.02kB)
+    Total RO  Size (Code + RO Data)                 1216 (   1.19kB)
     Total RW  Size (RW Data + ZI Data)               264 (   0.26kB)
-    Total ROM Size (Code + RO Data + RW Data)       1048 (   1.02kB)
+    Total ROM Size (Code + RO Data + RW Data)       1224 (   1.20kB)
 
 ==============================================================================
 
